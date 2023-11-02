@@ -1,0 +1,525 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[backend=bibtex,bibencoding=ascii,style=numeric,sorting=none]{biblatex}
+\usepackage{slashed}
+\usepackage{xcolor}
+\addbibresource{source.bib}
+
+
+\author{Julian Köberle}
+\title{Notes on fermions in curved space}
+\begin{document}
+	\maketitle
+	
+	\newcommand{\np}{\slashed{\partial}}
+	\newcommand{\nG}{\slashed{\Gamma}}
+	\newcommand{\nn}{\slashed{\nabla}}
+	\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}\textbf{}
+	
+	
+	\newcommand{\tensor}[3]{{#1}^{#2}_{#3}}
+	
+	
+	\begin{abstract}
+		These are notes on my work studying the behavior of fermions in curved space. These notes may contain spelling errors, grammatical errors or stylistic inaccuracies and are therefore not intended for distribution to third parties.
+		
+	\end{abstract}
+	
+	\tableofcontents 
+	
+	
+	\section{$\psi(x)$ in Minkowskispace}
+	The Dirac equation is as follows;
+	\begin{equation}
+		\label{diracEq}
+		\left( i \np -m \right) \psi(x) = 0 
+	\end{equation}
+
+	where $\np = \gamma^\mu \partial_\mu$,
+	
+	One approach to solving the equation is:
+	$$
+	\psi(x) = u(\vec{p}) e^{i p^\mu x_\mu}
+	$$
+	
+	$$
+	u^{(1)}\left({\vec {0}}\right)={\begin{bmatrix}1\\0\\0\\0\end{bmatrix}}\qquad u^{(2)}\left({\vec {0}}\right)={\begin{bmatrix}0\\1\\0\\0\end{bmatrix}}\qquad v^{(1)}\left({\vec {0}}\right)={\begin{bmatrix}0\\0\\1\\0\end{bmatrix}}\qquad v^{(2)}\left({\vec {0}}\right)={\begin{bmatrix}0\\0\\0\\1\end{bmatrix}}
+	$$
+	
+	For a ortochronous propper lorentz transformation
+	$$ 
+	x \rightarrow x' = \Lambda x
+	$$
+	$$\psi(x) \rightarrow \psi'(x') = \Lambda_{1/2} \psi(x) \leftarrow \text{spinor-transformation-rule}$$
+	
+	follows
+	$$
+	\Lambda_{1/2}^{-1} \gamma^\mu \Lambda_{1/2} = \Lambda^\mu_{1/2 \nu} \gamma^\nu
+	$$
+	
+	\begin{proof}
+		$$\left( i \np' -m \right) \psi '(x') = 0$$ 
+		\break
+		with
+		$$\partial'_\mu = {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu $$
+		$$\rightarrow \np' = \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu$$
+		follows
+		$$\left( i \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu -m \right) \Lambda_{1/2} \psi(x) = 0$$ 
+		$$ \Lambda_{1/2}  \Lambda_{1/2}^{-1}\left( i \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu -m \right) \Lambda_{1/2} \psi(x) = 0$$ 
+		$$ \Lambda_{1/2} \left( i \Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu \Lambda_{1/2} -m \right) \psi(x) = 0$$ 
+		$$ \Lambda_{1/2} \left( i \Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}   \Lambda_{1/2} \partial_\nu -m \right) \psi(x) = 0$$ 
+		because
+		$$\left( i \np -m \right) \psi(x) = 0$$
+		follows
+		$$\Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}   \Lambda_{1/2} = \gamma^\nu$$
+		$$\Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}   = \gamma^\nu \Lambda_{1/2}^{-1}$$
+		$$\Lambda_{1/2}^{-1} \gamma^\mu \delta^\alpha_\mu   = \gamma^\nu \Lambda_{1/2}^{-1}\Lambda^\alpha_{\ \nu}$$
+		$$\Lambda_{1/2}^{-1} \gamma^\alpha \Lambda_{1/2} = \gamma^\nu \Lambda^\alpha_{\ \nu}=  \Lambda^\alpha_{\ \nu} \gamma^\nu $$
+	\end{proof}
+	
+	\section{Dirac equation in curved space}
+	Equation (\ref{diracEq}) is not well defined in curved space, because $\partial_\mu \Psi(x)$ does not transform under a general coordinate transformation like a spinor. Further the Clifford-algebra needs to be generalized to the generic the metric $g_{\mu \nu}$. Since GR is defined on a manifold $\mathcal{M}$, it is possible to choose a coordinate system, that is locally flat and has Lorentzian signature. In order to manifest these circumstances in a mathematical formalism, the \textit{vierbein} or \textit{tetraed} formalism is suitable, which is worth studying more closely.
+	
+	\begin{equation}
+		\label{tetraed}
+		g_{\mu \nu}(x)  e_a^{\ \mu}(x) e_b^{\ \nu}(x) = \eta_{a b}
+	\end{equation}
+	Equation (\ref{tetraed}) is the \underline{local} coordinate transformation connecting the curved metric $g_{\mu \nu}$ and the flat metric $\eta_{ab}$. Here $e_a^\mu(x)$ are the so-called tetraeds. To distinguish flat from general coordinates, Greek indices $\mu,\nu,\ldots$ are used for curved space and
+	Latin indices $a,b,c,\ldots$ are therefore used for the local flat space. In order not to overload the notation, $x$ dependencies are suppressed, and we write $g_{\mu\nu} = g_{\mu\nu}(x)$ and $e_a^{\ \mu } = e_a^{\ \mu}(x)$
+	¸
+	A relation for the inverse metric can be defined analogously as follows.
+	
+	
+	\begin{equation}
+		\label{tetraed}
+		g^{\mu \nu}  \tilde{e}_\mu^{\ a} \tilde{e}_\nu^{\ b} = \eta^{a b}
+	\end{equation}
+	 $e$ and $\tilde{e}$ are generally different objects, since the index position of the Greek or Latin index clearly defines whether it is either $e$ or $\tilde{e}$ the " $\tilde{}$ " is omitted, but care must be taken, when expressions are explicitly written in components; since e.g. $e^2_2 \neq \tilde{e}^2_2$
+	 
+
+	Because of
+	$$g^{\mu\nu}g_{\nu\alpha}=\delta^\mu_\alpha$$
+	follows: 
+	$$
+	e_a^{\ \mu}e_\mu^{\ b} = \delta_a^b \ , \ \ e_a^{\ \nu}e_\mu^{\ a} = \delta_\mu^\nu
+	$$
+	A general tensor $T^{\mu_1 \mu_2 \ldots \mu_l}\,_{\nu_1 \nu_2 \ldots \nu_p}$ can be written in flat coordinates as follows,
+	
+	
+
+	\begin{equation}
+		T^{a_1 a_2 \ldots a_l}_{\ \ \ \ \ \ \ \ \ b_1 b_2 \ldots b_p} = e_{a_1}^{\ \nu_1} e_{a_2}^{\ \nu_2} \ldots e_{a}^{\ \nu_l} e_{\mu_1}^{\ b_1} e_{\mu_2}^{\ b_2} \ldots e_{\mu_p}^{\ b_p} T^{\mu_1 \mu_2 \ldots \mu_l}_{\ \ \ \ \ \ \ \ \ \nu_1 \nu_2 \ldots \nu_p}
+	\end{equation}
+	
+	\subsection{Covariant derivative}
+	A derivative of vectors, or more generally tensors, is a mathematical "tool" that measures the change in spacetime. Unfortunately, the expression $\partial_\mu V^\nu$ has in general no tensorial behavior. If a general coordinate transformation $\partial x^\alpha/ \partial x'^\nu$ acts on $\partial_\mu V^\nu$, terms of the second derivative arise which destroy the tensorial behaviour.
+	 
+	
+	Furthermore, a comparison of vectors that are spatially separated and therefore live in different tangential spaces is not properly defined because, as mentioned, they are elements of another space. In order to compare vectors from different spaces, one must be shifted autoparallel from one tangent space $T_P\mathcal{M}$ to the other $T_Q\mathcal{M}$.
+	
+	
+	Therefore it makes sense to define a covariant derivative $\nabla_\textbf{v}$, where $\textbf{v} \in T_P\mathcal{M}$. If $\textbf{u} : \mathcal{M} \mapsto T\mathcal{M}$ is a vector field defined on the manifold, then $\nabla_\textbf{v}\textbf{u} |_P$ is the change of $\textbf{u}$ towards $\textbf{v}$ at point $P$, the following expression can easily be rewritten in index notation; by using
+	$\textbf{u} = u^\alpha(x) \partial_\alpha$ and $\textbf{v} = v^\beta \partial_\beta$. For the effect on basis vectors it makes sense to define a connection in the following way $\nabla_{(\partial_\beta)}(\partial_\alpha) = \Gamma^\mu_{\alpha \beta} \partial_\mu$ (at this point, no clear definition on $\Gamma$ is made, only the fact, it cancels the terms of second order derivative, which would arise by transforming $\partial_\mu V^\nu$ but it's not a unique definition, to make the covariant derivative properly tensorial) follows with the insertion of $\textbf{u}$ and $\textbf{v} $;
+	
+	\begin{multline}
+		\label{kovariant}
+		\nabla_{v^\beta \partial_\beta}(u^\alpha(x) \partial_\alpha) = v^\beta \nabla_{(\partial_\beta)} (u^\alpha(x)\partial_\alpha ) = v^\beta \left(\nabla_{(\partial_\beta)} (u^\alpha(x)) \partial_\alpha +  u^\alpha(x) \nabla_{(\partial_\beta)} \partial_\alpha \right)) \\ = v^\beta \left(\partial_\beta u^\alpha(x)  \partial_\alpha +  u^\alpha(x) \Gamma^\mu_{\alpha \beta} \partial_\mu\right)  \\ = v^\beta \left(\partial_\beta u^\alpha(x)   +  u^\mu(x) \Gamma^\alpha_{\mu \beta}\right) \partial_\alpha 
+	\end{multline}
+	The second term is obtained, because of the linearity of $T_P\mathcal{M}$, the second by the product rule of the derivation, the third by substituting $\Gamma$ and that the fact that a covariant derivation of scalars goes into the conventional derivation. The last expression is obtained by index renaming and is valid for all $v^\beta$, therefore it follows for the covariant derivation in index notation,
+	
+
+	$$\nabla_\beta u^\alpha = \partial_\beta u^\alpha  +   \Gamma^\alpha_{\mu \beta} u^\mu$$
+	
+	because of $\nabla_\beta u^\alpha u_\alpha = \partial_\beta u^\alpha u_\alpha$ 
+	follows
+	
+	$$\nabla_\beta u_\alpha = \partial_\beta u^\alpha  -   \Gamma^\mu_{\alpha \beta} u_\mu$$.
+	
+	By doing this procedure for $\nabla_\beta u^\mu u^\nu \ldots$ one gets the behaviour  of a general tensor  $T^{\mu_1 \mu_2 \ldots \mu_l}\,_{\nu_1 \nu_2 \ldots \nu_p}$ acting with a covariant derivative. Additionally, it makes a lot of sense to define the connection torsion free which means,
+	
+	$$
+	\Gamma^\rho\,_{\alpha \beta} = \Gamma^\rho\,_{\beta \alpha}.
+	$$
+	
+	Furthermore, by demanding metric-compatibility, which means $\nabla_\alpha g_{\mu \nu} = 0$
+	one gets,
+	
+	
+	\begin{equation}
+		\label{christoffelconnection}
+		\Gamma _{{\mu }{\nu }}^{\sigma }={\frac {1}{2}}g^{{\sigma }{\kappa }}\left({\frac {\partial g_{{\nu }{\kappa }}}{\partial x^{\mu }}}+{\frac {\partial g_{{\mu }{\kappa }}}{\partial x^{\nu }}}-{\frac {\partial g_{{\mu }{\nu }}}{\partial x^{\kappa }}}\right)
+	\end{equation}
+	
+	
+	It is now interesting to know how the covariant derivatives acts on $u^a$. 
+	
+	With the approach;
+	
+	\begin{equation}
+		\label{dua}
+		\nabla_\beta u^a = \partial_\beta u^a + \omega_{\beta b}^{ \ \ a}u^b
+	\end{equation}
+	
+	yields 
+	$$
+	e_\alpha^a \nabla_\beta u^\alpha = \nabla_\beta u^a
+	$$
+	follows,
+	$$
+	e_\alpha^a \left(  \partial_\beta u^\alpha  +   \Gamma^\alpha_{\mu \beta} u^\mu \right) = \partial_\beta u^a + \omega_{\beta b}^{ \ \ a}u^b
+	$$
+	$$
+	 \partial_\beta(u^\alpha e_\alpha^a) - u^\alpha \partial_\beta (e_\alpha^a) +  e_\alpha^a   \Gamma^\alpha_{\mu \beta} u^\mu  = \partial_\beta u^a + \omega_{\beta b}^{ \ \ a}u^b
+	$$
+	$$
+ - u^b e_b^{\ \alpha} \partial_\beta (e_\alpha^a) +  e_\alpha^a   \Gamma^\alpha_{\mu \beta} u^b e_b^{\ \mu}  =  \omega_{\beta b}^{ \ \ a}u^b
+	$$
+	for all $u^b$ follows
+	$$
+	 \omega_{\beta b}^{ \ \ a} = \Gamma^\alpha_{\mu \beta} e_b^{\ \mu} e_\alpha^a    - e_b^{\ \alpha} \partial_\beta (e_\alpha^a)  
+	$$
+	In contrast to $\Gamma^\alpha_{\mu \beta}$, $\omega_{\beta a b}$ transforms like a 2-form in $a,b$ which means its totally antisymmetric in $a$ and $b$.
+	
+	Finally, the covariant derivative on a spinor $\Psi(x)$ is as follows,
+	
+	\begin{equation}
+		\label{DPsi}
+		\nabla_\beta \Psi = \partial_\beta \Psi - \frac{1}{2} \omega_\mu^{\ a b }\Gamma_{(j)}(M_{a b})\Psi
+	\end{equation}
+	where $\Gamma_{(j)}$ is the spin-$j$ representation of the Lorentz algebra $\mathfrak{su}(1,3)$
+	with $M_{a b} \in \mathfrak{su}(1,3)$ satisfying commutator relations,
+	
+	$$
+	[M^{a b },M^{c d }]=M^{a d }\eta ^{b c }-M^{b d }\eta ^{a c }+M^{b c }\eta ^{a d }-M^{a c }\eta ^{b d }
+	$$
+	
+	if $\Psi$ would have spin-1 it would transform as a vector $v^a$ and the corresponding representation would be:
+	
+	$$
+	\Gamma_{(1)}(M^{a b }) = (M^{a b })_{c d }=\delta ^{a }{}_{c }\delta ^{b }{}_{d }-\delta ^{b }{}_{c }\delta ^{a }{}_{d },
+	$$
+	by pluggin in into eq. (\ref{DPsi}) one would get (\ref{dua}).
+	
+	But $\Psi$ is a spinor and has obviously spin-1/2 and therefore, the corresponding Lorentz representation is defined as follows,
+	
+	$$
+	\Gamma_{(1)}(M^{a b }) = \frac{1}{4}[\gamma^a, \gamma^b].
+	$$
+	
+	It is worth introducing the so called spinor-connection which reads,
+	
+	$$
+	\Gamma_\mu = -\frac{1}{8} \omega_{\mu a b}[\gamma^a, \gamma^b]
+	$$
+
+	which this definition the dirac equation in curved space finally reads,
+	
+	
+	\begin{equation}
+	\left(i\gamma^a \left( \partial_\alpha + \Gamma_\alpha \right)-m\right)\Psi = (i\nn - m)\Psi = 0
+	\end{equation}
+	\section{Curvature Tensor}
+	So far, no metamathematical treatment what curvature actually means wasn't described yet.  We know by parallel-transporting a vector on a curved surface (imagine a shepere) it will show into a different direction when one would have chosen a different path. The difference between these two vectors parallel-transported over those paths, is what we call curvature. By taking the paths infinitesimal one gets the Riemann curvature tensor $R^\rho\,_{\alpha \beta  \gamma }$ defined the following,
+	
+	$$
+	[\nabla_\mu, \nabla_\nu]v^\rho =  R^\rho\,_{\mu \nu \gamma } v^\gamma
+	$$
+	or,
+	
+	$$
+	[\nabla_\mu, \nabla_\nu]v^a =  R^a\,_{\mu \nu b } v^b.
+	$$
+	
+	Because $R^\rho\,_{\mu \nu \gamma }$ and $R^a\,_{\mu \nu b }$ are both tensors, it is possible to transform them into each other with,
+	
+	$$
+	R^\rho\,_{\mu \nu \gamma } = e_a\,^\rho e_\gamma\,^b R^a\,_{\mu \nu b }
+	$$
+	
+	and finally acting on a spinor one gets,
+	$$
+	[\nabla_\mu, \nabla_\nu]\psi = \frac{i}{4} R_{\mu \nu \alpha \beta} \sigma^{\alpha \beta} \psi.
+	$$
+	
+	
+	
+	\section{Solution of dirac equation to $\mathcal{O} (\hbar^2)$}
+	$$
+	\ldots
+	$$
+	\begin{equation}
+		\label{solution_to_diraceq}
+		\psi(x) = \psi_0 \exp\left(\frac{i}{\hbar}\int dx^\mu p_\mu\right)
+	\end{equation}
+	\section{Corrections to 4-velocity and 4-acceleration}
+	$$
+	\ldots
+	$$
+	\begin{equation}
+		\label{correction_to_v}
+		v_\alpha = u_\alpha + \frac{\hbar}{mi}\overbar{\psi}_0 \Gamma_\alpha \psi_0 +\mathcal{O} (\hbar^2)
+	\end{equation}
+	$\ldots$
+	\begin{equation}
+		\label{correction_to_a}
+		a_\alpha = v^\beta \nabla_\beta v_\alpha =  -\frac{\hbar}{4m} R_{\alpha \beta \gamma \delta}u^\beta \sigma^{\gamma \delta}
+	\end{equation}
+	
+	
+	
+	\section{Effect by gravitational waves}
+	By linearizing the Einstein Equation and neglecting matter sources one finds,
+	
+	$$
+	g_{\mu \nu } = \eta_{\mu \nu } + h_{\mu \nu }e^{i k_\alpha x^\alpha} + \mathcal{O}(|h|^2)
+	$$
+	inserting this into the definition of the Christoffel-connection (\ref{christoffelconnection}) one finds,
+	
+	$$
+	\Gamma^{\mu}\,_{\nu \alpha} = i\frac{1}{2}\eta^{\mu \beta}  \left(-h_{\nu \alpha} k_{\beta}+h_{\nu \beta} k_{\alpha}+h_{\beta \alpha} k_{\nu}\right)  \exp\left(i k_{\lambda} x^{\lambda}\right) +  \mathcal{O}(|h|^2)
+	$$
+	
+	
+	$$
+	R^{\rho}\,_{\sigma \mu \nu} = \partial_\mu \Gamma^{\rho}\,_{\nu \sigma} - \partial_\nu \Gamma^{\rho}\,_{\mu \sigma} + \mathcal{O}(|h|^2)
+	$$
+	
+	$$
+	R^{\rho}\,_{\sigma \mu \nu} = i k_\mu \Gamma^{\rho}\,_{\nu \sigma} -  i k_\nu \Gamma^{\rho}\,_{\mu \sigma} + \mathcal{O}(|h|^2)
+	$$
+	
+	$$
+	R^{\rho}\,_{\sigma \mu \nu} = \eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu \sigma} - h_{\nu \beta}  k_\sigma \right) - k_\nu \left( k_\beta h_{\mu \sigma} - h_{\mu \beta}  k_\sigma\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)  + \mathcal{O}(|h|^2)
+	$$
+	
+	The geodesic equation is as follows,
+	$$
+	\frac{du^\alpha}{d \tau} = \Gamma^{\alpha}\,_{\mu \nu}u^\mu u^\nu
+	$$
+	$$%
+	\Rightarrow
+	\frac{du^\alpha}{d \tau} = 0
+	\Rightarrow u^\alpha = const
+	$$
+	because otherwise the contraction of $R^{\rho}\,_{\sigma \mu \nu}u^\sigma$ would be of order $|h|^2$.
+	
+	$$
+	R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu \sigma} - h_{\nu \beta}  k_\sigma \right) - k_\nu \left( k_\beta h_{\mu \sigma} - h_{\mu \beta}  k_\sigma\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] u^\sigma
+	$$
+	set $u^\sigma = \delta^\sigma_3 - \delta^\sigma_0$
+	
+	The spin-tensor is defined as follows,
+	
+	follows,
+	
+	\begin{multline}
+		R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu 3} - h_{\nu \beta}  k_3
+		 \right) - k_\nu \left( k_\beta h_{\mu 3} - h_{\mu \beta}  k_3 \right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] - \\
+		\left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu 0} - h_{\nu \beta}  k_0 \right) - k_\nu \left( k_\beta h_{\mu 0} - h_{\mu \beta}  k_0\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] 
+	\end{multline}
+	\begin{multline}
+		R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(- k_\mu  h_{\nu \beta}  k_3 + k_\nu h_{\mu \beta}  k_3  \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] - \\
+		\left[\eta^{\rho \beta}\left( - k_\mu  h_{\nu \beta}  k_0 + k_\nu  h_{\mu \beta}  k_0 \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] 
+	\end{multline}
+
+	
+	
+	$$
+	\sigma^{\mu \nu} = \frac{1}{4} e_a\,^\mu e_b\,^\nu \  \overbar{\psi}_0 \left[\gamma^a, \gamma^b \right]\psi_0
+	$$
+	
+	
+	$$
+	\eta_{ab} = e_a\,^\mu e_b\,^\nu g_{\mu \nu} = e_a\,^\mu e_b\,^\nu\left( \eta_{\mu \nu} + h_{\mu \nu}\exp\left(i k_{\lambda} x^{\lambda}\right)\right)
+	$$
+	in matrix notation this equation reads,
+	
+	$$
+	\textbf{e}^\top \textbf{$\eta$}\textbf{e} + \textbf{e}^\top\textbf{h}\textbf{e} = \textbf{$\eta$}
+	$$
+	if one finds a solution \textbf{e}, someone else may find a solution $ \Lambda$\textbf{e}
+	
+	\begin{proof}
+		$\textbf{e}^\top \eta\textbf{e} = \textbf{g}$
+		with the subsitution $\textbf{e} \rightarrow \Lambda\textbf{e} $ follows, $\textbf{e}^\top \underbrace{\Lambda^\top \eta \Lambda}_{\eta}\textbf{e} = \textbf{g} $
+	\end{proof}
+	
+	
+	
+	$$
+	g = \left[\begin{matrix}-1 & 0 & 0 & 0\\0 & h_{11} + 1 & h_{12} & 0\\0 & h_{12} & 1 - h_{11} & 0\\0 & 0 & 0 & 1\end{matrix}\right]
+	$$
+	one possible solution is,
+	
+		\begin{equation}
+		\textbf{e} = \left(\begin{matrix}1 & 0 & 0 & 0\\0 & \frac{\sqrt{2} \sqrt{\frac{- 2 h_{11} \left(h_{11}^{2} - h_{11} + h_{12}^{2}\right) + h_{12}^{2} \left(\sqrt{- h_{11}^{2} - h_{12}^{2} + 1} + 1\right)}{h_{11}^{2} + h_{12}^{2}}} \left(h_{11} \sqrt{- h_{11}^{2} - h_{12}^{2} + 1} - \frac{h_{12}^{2}}{2}\right)}{2 h_{11}^{2} - 2 h_{11} + h_{12}^{2}} & \frac{\sqrt{2} h_{12} \sqrt{\frac{- 2 h_{11} \left(h_{11}^{2} - h_{11} + h_{12}^{2}\right) + h_{12}^{2} \left(\sqrt{- h_{11}^{2} - h_{12}^{2} + 1} + 1\right)}{h_{11}^{2} + h_{12}^{2}}} \left(h_{11} + \sqrt{- h_{11}^{2} - h_{12}^{2} + 1} - 1\right)}{2 \cdot \left(2 h_{11}^{2} - 2 h_{11} + h_{12}^{2}\right)} & 0\\0 & \frac{\sqrt{2} h_{12} \sqrt{\frac{- 2 h_{11} \left(h_{11}^{2} - h_{11} + h_{12}^{2}\right) + h_{12}^{2} \left(\sqrt{- h_{11}^{2} - h_{12}^{2} + 1} + 1\right)}{h_{11}^{2} + h_{12}^{2}}} \left(h_{11} + \sqrt{- h_{11}^{2} - h_{12}^{2} + 1} - 1\right)}{2 \cdot \left(2 h_{11}^{2} - 2 h_{11} + h_{12}^{2}\right)} & - \frac{\sqrt{2} \sqrt{\frac{- 2 h_{11}^{3} + 2 h_{11}^{2} - 2 h_{11} h_{12}^{2} + h_{12}^{2} \sqrt{- h_{11}^{2} - h_{12}^{2} + 1} + h_{12}^{2}}{h_{11}^{2} + h_{12}^{2}}}}{2} & 0\\0 & 0 & 0 & 1\end{matrix}\right)
+	\end{equation}
+	
+	where $h_{12}$ is actually $h_{12} \exp\left(i k_{\lambda} x^{\lambda}\right)$ likewise $h_{11}$ is actually $h_{11} \exp\left(i k_{\lambda} x^{\lambda}\right)$.
+	
+	Setting $\Psi = (1,0,0,0)$, follows for $\sigma^{a b}$,
+	
+	
+	$$
+	\sigma^{a b} = \frac{1}{4} \overbar{\Psi}[\gamma^a,\gamma^b]\Psi = \left(\begin{matrix}0 & 0 & 0 & 0\\0 & 0 & - \frac{i}{2} & 0\\0 & \frac{i}{2} & 0 & 0\\0 & 0 & 0 & 0\end{matrix}\right)^{ab}
+	$$\\
+	
+	therefore,
+	
+	$$
+	\sigma^{\mu \nu} =  e_a\,^\mu \sigma^{a b} e_b\,^\nu  = \textbf{e}^\top \sigma \textbf{e} = \left(\begin{matrix}0 & 0 & 0 & 0\\0 & 0 & - \frac{i \sqrt{- h_{11}^{2} e^{2 i k x} - h_{12}^{2} e^{2 i k x} + 1}}{2} & 0\\0 & \frac{i \sqrt{- h_{11}^{2} e^{2 i k x} - h_{12}^{2} e^{2 i k x} + 1}}{2} & 0 & 0\\0 & 0 & 0 & 0\end{matrix}\right)^{\mu \nu}
+	$$
+	
+	plugging all this results into e.q (\ref{correction_to_a}),
+	
+	
+	\begin{multline}
+		a_\beta = -\frac{\hbar}{2m}\left(- k_2  h_{3 \beta}  k_3 + k_3 h_{2 \beta}  k_3  + k_2  h_{3 \beta}  k_0 - k_3  h_{2 \beta}  k_0\right) \exp\left(i k_{\lambda} x^{\lambda}\right) \sigma^{23} \\
+		\Rightarrow a_\beta = -\frac{\hbar}{2m}\left( k_3 h_{2 \beta}  k_3  - k_3  h_{2 \beta}  k_0\right) \exp\left(i k_{\lambda} x^{\lambda}\right) \sigma^{23} \\
+	\end{multline}
+	
+	
+	$$
+	a(x)_\beta = -\frac{\hbar}{2m}\left(\begin{matrix}0\\k_3 h_{12}  k_3  - k_3  h_{12}  k_0\\k_3 h_{11}  k_3  + k_3  h_{22}  k_0\\0\end{matrix}\right)\exp \left(i k_{\lambda} x^{\lambda}\right) \underbrace{\frac{i \sqrt{- h_{11}^{2} e^{2 i k x} - h_{12}^{2} e^{2 i k x} + 1}}{2}}_{\approx i/2}
+	$$
+	
+	but $a_\beta$ can't be imaginary therefore one needs to consider the real part of the above equation.
+	
+	Which leads finally to,
+	
+	
+	\begin{equation}
+			\boxed{a(x)_\beta = \frac{\hbar}{4m}\left(\begin{matrix}0\\k_3 h_{12}  k_3  - k_3  h_{12}  k_0\\k_3 h_{11}  k_3  + k_3  h_{22}  k_0\\0\end{matrix}\right)\sin\left(i k_{\lambda} x^{\lambda}\right)}
+	\end{equation}
+	
+	to solve the trajectory numerically, one can make the following expansion,
+	
+	$$
+	x^\alpha(\tau + d\tau) = x^\alpha + v^\alpha(x(\tau))d\tau
+	$$
+	$$
+	v^\alpha(x(\tau + d\tau)) = u^\alpha(x(\tau + d\tau)) + \delta u^\alpha(x(\tau + d\tau))
+	$$
+	$$
+	u^\alpha(x(\tau + d\tau)) = u^\alpha(x(\tau)) - \Gamma^\alpha_{\mu \nu}(x(\tau))u^\mu(x(\tau)) u^\nu(x(\tau)) d\tau 
+	$$
+	$$
+	\delta u^\alpha(x(\tau + d\tau)) = \delta u^\alpha(x(\tau)) + a^\alpha(x(\tau))d\tau
+	$$
+	
+	
+	\color{red}
+	$$
+	x^\alpha(\tau + d\tau) = x^\alpha + v^\alpha(x(\tau))d\tau
+	$$
+	$$
+	v^\alpha(x(\tau + d\tau)) = v^\alpha(x(\tau)) + a^\alpha(x(\tau))d\tau - \Gamma^\alpha\,_{\mu \nu}v^\mu(x(\tau))v^\nu(x(\tau))d\tau
+	$$
+	
+	\color{blue} $v^\alpha(x(\tau))v_\alpha(x(\tau)) = -1 \  \forall  \tau$ \color{black} or just \color{orange} $u^\alpha(x(\tau))u_\alpha(x(\tau)) = -1 \  \forall  \tau$
+
+	\color{black}
+	
+	\section{Correction to geodesic in Schwarzschild background}
+	The Schwarzschild metric reads as follows,
+	
+	$$
+	ds^2 = -f dt^2 + \frac{1}{f} dr^2 + r^2 \left( d \theta^2 + sin^2\theta d\phi^2 \right),
+	$$
+	with $f = 1 - \frac{2M}{r}$, where $r$ is the blackhole mass.
+	
+	A convinent solution fo the tetraeds is, 
+	$$ e_{\alpha}\,^{a} = \text{diag}\left( \sqrt{f}, \frac{1}{\sqrt{f}}, r , r \ sin(\theta) \right)$$
+	because g, and e is diagonal follows, 
+	$$ e_{a}\,^{\alpha} = \text{diag}\left( \frac{1}{\sqrt{f}}, \sqrt{f}, \frac{1}{r} , \frac{1}{r \ sin(\theta)} \right).$$
+		
+
+	
+	%Further we need the spinor $\psi$ in spherical coordiants,  which in rest frame coordinates reads,
+	%$$
+	%\psi_0(x) = {\begin{bmatrix}\cos\theta/2\\e^{i\phi} \sin \theta/2\\0\\1\end{bmatrix}},
+	%$$ with spin direction $n^i = \left( sin \theta \cos \phi , \sin \theta  \sin \phi , \cos \theta \right)$
+	
+	Using the above defined tetraed gives,
+	
+	$$
+	\sigma^{\mu \nu} = \left(\begin{matrix}0 & 0 & 0 & 0\\0 & 0 & - \frac{i \sqrt{f}}{2 r} & 0\\0 & \frac{i \sqrt{f}}{2 r} & 0 & 0\\0 & 0 & 0 & 0\end{matrix}\right)^{\mu \nu}
+	$$
+	
+	
+	$$
+	R^{\rho}\,_{\sigma \mu \nu} = \eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu \sigma} - h_{\nu \beta}  k_\sigma \right) - k_\nu \left( k_\beta h_{\mu \sigma} - h_{\mu \beta}  k_\sigma\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)  + \mathcal{O}(|h|^2)
+	$$
+	
+	The geodesic equation is as follows,
+	$$
+	\frac{du^\alpha}{d \tau} = \Gamma^{\alpha}\,_{\mu \nu}u^\mu u^\nu
+	$$
+	$$%
+	\Rightarrow
+	\frac{du^\alpha}{d \tau} = 0
+	\Rightarrow u^\alpha = const
+	$$
+	because otherwise the contraction of $R^{\rho}\,_{\sigma \mu \nu}u^\sigma$ would be of order $|h|^2$.
+	
+	$$
+	R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu \sigma} - h_{\nu \beta}  k_\sigma \right) - k_\nu \left( k_\beta h_{\mu \sigma} - h_{\mu \beta}  k_\sigma\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] u^\sigma
+	$$
+	set $u^\sigma = \delta^\sigma_3 - \delta^\sigma_0$
+	
+	The spin-tensor is defined as follows,
+	
+	follows,
+	
+	\begin{multline}
+		R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu 3} - h_{\nu \beta}  k_3
+		\right) - k_\nu \left( k_\beta h_{\mu 3} - h_{\mu \beta}  k_3 \right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] - \\
+		\left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu 0} - h_{\nu \beta}  k_0 \right) - k_\nu \left( k_\beta h_{\mu 0} - h_{\mu \beta}  k_0\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] 
+	\end{multline}
+	\begin{multline}
+		R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(- k_\mu  h_{\nu \beta}  k_3 + k_\nu h_{\mu \beta}  k_3  \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] - \\
+		\left[\eta^{\rho \beta}\left( - k_\mu  h_{\nu \beta}  k_0 + k_\nu  h_{\mu \beta}  k_0 \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] 
+	\end{multline}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+	
+	
+	
+	
+	%%\printbibliography
+	
+	
+\end{document}
+
