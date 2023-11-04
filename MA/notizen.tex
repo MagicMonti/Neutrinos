@@ -446,47 +446,80 @@
 	%$$
 	%\psi_0(x) = {\begin{bmatrix}\cos\theta/2\\e^{i\phi} \sin \theta/2\\0\\1\end{bmatrix}},
 	%$$ with spin direction $n^i = \left( sin \theta \cos \phi , \sin \theta  \sin \phi , \cos \theta \right)$
+	with 
+		$$
+	\sigma^{a b} = \frac{i}{2} \overbar{\Psi}[\gamma^a,\gamma^b]\Psi = \left(\begin{matrix}0 & 0 & 0 & 0\\0 & 0 & - 1 & 0\\0 & 1 & 0 & 0\\0 & 0 & 0 & 0\end{matrix}\right)^{ab}
+	$$\\
 	
 	Using the above defined tetraed gives,
 	
 	$$
-	\sigma^{\mu \nu} = \left(\begin{matrix}0 & 0 & 0 & 0\\0 & 0 & - \frac{i \sqrt{f}}{2 r} & 0\\0 & \frac{i \sqrt{f}}{2 r} & 0 & 0\\0 & 0 & 0 & 0\end{matrix}\right)^{\mu \nu}
+	\sigma^{\mu \nu} = \left(\begin{matrix}0 & 0 & 0 & 0\\0 & 0 & - \frac{\sqrt{f}}{2 r} & 0\\0 & \frac{\sqrt{f}}{2 r} & 0 & 0\\0 & 0 & 0 & 0\end{matrix}\right)^{\mu \nu}
 	$$
-	
-	
+	Using the geodesic equaiton.
 	$$
-	R^{\rho}\,_{\sigma \mu \nu} = \eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu \sigma} - h_{\nu \beta}  k_\sigma \right) - k_\nu \left( k_\beta h_{\mu \sigma} - h_{\mu \beta}  k_\sigma\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)  + \mathcal{O}(|h|^2)
+	\frac{du^\alpha}{d \tau} = \Gamma^{\alpha}\,_{\mu \nu}u^\mu u^\nu.
 	$$
-	
-	The geodesic equation is as follows,
-	$$
-	\frac{du^\alpha}{d \tau} = \Gamma^{\alpha}\,_{\mu \nu}u^\mu u^\nu
-	$$
-	$$%
-	\Rightarrow
-	\frac{du^\alpha}{d \tau} = 0
-	\Rightarrow u^\alpha = const
-	$$
-	because otherwise the contraction of $R^{\rho}\,_{\sigma \mu \nu}u^\sigma$ would be of order $|h|^2$.
+	leads to,
 	
 	$$
-	R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu \sigma} - h_{\nu \beta}  k_\sigma \right) - k_\nu \left( k_\beta h_{\mu \sigma} - h_{\mu \beta}  k_\sigma\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] u^\sigma
+	\frac{d^2 r}{d \tau^2} = -M /r^2 (1-2M/r) \left(\frac{dt}{d\tau}\right)^2 + M (1-2M/r)/r^2 \left(\frac{dr}{d \tau}\right)^2
 	$$
-	set $u^\sigma = \delta^\sigma_3 - \delta^\sigma_0$
-	
-	The spin-tensor is defined as follows,
-	
+	usign $$-ds^2 = d\tau^2 = \left(1- 2M/r\right)dt^2 - 1/(1-2M/r)dr^2$$
 	follows,
+	$$
+	1 = (1-2M/r)\left(\frac{dt}{d\tau}\right)^2 - 1/(1-2M/r)\left(\frac{dr}{d\tau}\right)^2
+	$$
+	leads to,
 	
-	\begin{multline}
-		R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu 3} - h_{\nu \beta}  k_3
-		\right) - k_\nu \left( k_\beta h_{\mu 3} - h_{\mu \beta}  k_3 \right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] - \\
-		\left[\eta^{\rho \beta}\left(k_\mu \left(k_\beta h_{\nu 0} - h_{\nu \beta}  k_0 \right) - k_\nu \left( k_\beta h_{\mu 0} - h_{\mu \beta}  k_0\right) \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] 
-	\end{multline}
-	\begin{multline}
-		R^{\rho}\,_{\sigma \mu \nu}u^\sigma = \left[\eta^{\rho \beta}\left(- k_\mu  h_{\nu \beta}  k_3 + k_\nu h_{\mu \beta}  k_3  \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] - \\
-		\left[\eta^{\rho \beta}\left( - k_\mu  h_{\nu \beta}  k_0 + k_\nu  h_{\mu \beta}  k_0 \right) \exp\left(i k_{\lambda} x^{\lambda}\right)\right] 
-	\end{multline}
+	$$
+	\frac{d^2r}{d\tau^2} = - \frac{M}{r^2} = \frac{d u_r}{d\tau}
+	$$
+	with $d\tau \  u_r = d r$ the above differential equation becomes,
+	
+	$$
+	du_r \ u_r = -\frac{M dr}{r^2}
+	$$
+	integrating yields,
+	
+	$$
+	\int_{u_0}^{u(r)} du \ u = - M \int _R^r \frac{dr}{r^2},
+	$$
+	follows
+	$$
+	u_r(r) = \sqrt{\left(2M\left(\frac{1}{r}-\frac{1}{R}\right) + \frac{{u_0}^2}{2} \right)}
+	$$
+	for the up spin one gets \footnote{for this result a computer algebra system has been used}
+	\begin{equation}
+		a_\alpha = v^\beta \nabla_\beta v_\alpha =  -\frac{\hbar}{4m} R_{\alpha \beta \gamma \delta}u^\beta \sigma^{\gamma \delta} = \frac{\hbar}{4m} \left[\begin{matrix}0 & 0 & \frac{2 M u_{r} \sqrt{1 - 2 M}}{r \left(- 2 M + r\right)} & 0\end{matrix}\right]_\alpha
+	\end{equation}
+	likewise for down spin
+	\begin{equation}
+		a_\alpha = v^\beta \nabla_\beta v_\alpha = -\frac{\hbar}{4m} \left[\begin{matrix}0 & 0 & \frac{2 M u_{r} \sqrt{1 - 2 M}}{r \left(- 2 M + r\right)} & 0\end{matrix}\right]_\alpha
+	\end{equation}
+	
+	$$
+	u_r(R) \approx 1 > u_r(\infty) \geq 0 
+	$$
+	if $R\geq 2M$, 
+	therefore the acceleration decreases with the increase of radial distance, this means fluctuations to the geodesic should be measurable in a relatively short distance since further the Compton wavelength is also a lot smaller than the Ricci-scalar, which means a quantum particle can be described as a classical particle with corrections without going into quantum gravity regime.
+	
+	with 
+	\begin{equation}
+		\label{correction_to_v}
+		v_\alpha = u_\alpha + \underbrace{\frac{\hbar}{mi}\overbar{\psi}_0 \Gamma_\alpha \psi_0}_{\delta v_\alpha} +\mathcal{O} (\hbar^2)
+	\end{equation}
+	with some laboriously index contraction using the above defined definition of $\Gamma_\alpha$
+	on finds for the up spin,
+	
+	$$
+	\delta v_\alpha = \frac{\hbar}{m} \left[\begin{matrix}0\\- 1/16 \left( \cos{\left(\theta \right)} + \cos{\left(3 \theta \right)}\right)\\\frac{1/4 \left(- 2 M r^{3} - M  \left(2 M - r\right)^{3} - r^{5} \sqrt{\frac{- 2 M + r}{r}} \left(2 M - r\right)^{2} \left(\sin{\left(\theta \right)} \sin^{2}{\left(\theta \right)} + 1\right)\right)}{r^{4}  \left(2 M - r\right)}\\0\end{matrix}\right]_\alpha
+	$$
+	
+	
+	
+	
+
 	
 	
 	
