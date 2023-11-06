@@ -6,3 +6,4 @@
 \contentsline {section}{\numberline {5}Corrections to 4-velocity and 4-acceleration}{7}{}%
 \contentsline {section}{\numberline {6}Effect by gravitational waves}{7}{}%
 \contentsline {section}{\numberline {7}Correction to geodesic in Schwarzschild background}{10}{}%
+\contentsline {subsection}{\numberline {7.1}Numerical experiments}{12}{}%

@@ -487,7 +487,7 @@
 	$$
 	follows
 	$$
-	u_r(r) = \sqrt{\left(2M\left(\frac{1}{r}-\frac{1}{R}\right) + \frac{{u_0}^2}{2} \right)}
+	u_r(r) = \sqrt{2\left(M\left(\frac{1}{r}-\frac{1}{R}\right) + \frac{{u_0}^2}{2} \right)}
 	$$
 	for the up spin one gets \footnote{for this result a computer algebra system has been used}
 	\begin{equation}
@@ -502,7 +502,7 @@
 	u_r(R) \approx 1 > u_r(\infty) \geq 0 
 	$$
 	if $R\geq 2M$, 
-	therefore the acceleration decreases with the increase of radial distance, this means fluctuations to the geodesic should be measurable in a relatively short distance since further the Compton wavelength is also a lot smaller than the Ricci-scalar, which means a quantum particle can be described as a classical particle with corrections without going into quantum gravity regime.
+	therefore the acceleration decreases with the increase of radial distance, this means fluctuations to the geodesic should be measurable in a relatively short distance since further the Compton wavelength is also lot smaller than the Ricci-scalar, which means a quantum particle can be described as a classical particle with corrections without going into quantum gravity regime. 
 	
 	with 
 	\begin{equation}
@@ -513,10 +513,30 @@
 	on finds for the up spin,
 	
 	$$
-	\delta v_\alpha = \frac{\hbar}{m} \left[\begin{matrix}0\\- 1/16 \left( \cos{\left(\theta \right)} + \cos{\left(3 \theta \right)}\right)\\\frac{1/4 \left(- 2 M r^{3} - M  \left(2 M - r\right)^{3} - r^{5} \sqrt{\frac{- 2 M + r}{r}} \left(2 M - r\right)^{2} \left(\sin{\left(\theta \right)} \sin^{2}{\left(\theta \right)} + 1\right)\right)}{r^{4}  \left(2 M - r\right)}\\0\end{matrix}\right]_\alpha
+	\delta v_\alpha = \frac{\hbar}{m} \left[\begin{matrix}0\\- 1/16 \left( \cos{\left(\theta \right)} - \cos{\left(3 \theta \right)}\right)\\\frac{1/4 \left(- 2 M r^{3} - M  \left(2 M - r\right)^{3} - r^{5} \sqrt{\frac{- 2 M + r}{r}} \left(2 M - r\right)^{2} \left(\sin{\left(\theta \right)} \sin^{2}{\left(\theta \right)} + 1\right)\right)}{r^{4}  \left(2 M - r\right)}\\0\end{matrix}\right]_\alpha
 	$$
 	
+	and for the down spin
 	
+	$$
+	\delta v_\alpha = \frac{\hbar}{m}\left[\begin{matrix}0\\1/16 \left( \cos{\left(\theta\right)} - \cos{\left(3\theta \right)}\right)\\\frac{1/4  \left(2 M r^{3} + M  \left(2 M - r\right)^{3} + r^{5} \sqrt{\frac{- 2 M + r}{r}} \left(2 M - r\right)^{2} \left(\sin{\left(\theta \right)} \sin^{2}{\left(\theta \right)} + 1\right)\right)}{r^{4}  \left(2 M - r\right)}\\0\end{matrix}\right]
+	$$
+	
+	\subsection{Numerical experiments}
+	since $u_\alpha u^\alpha = -1$ follows,
+	$$
+	u_t(r) = \frac{\sqrt{r \left(2 M + r \ {u_{r}(r)}^{2} - r\right)}}{- 2 M + r} 
+	$$
+	To get numerical results euler method was chosen such that,
+		$$
+	x^\alpha(\tau + d\tau) = x^\alpha + v^\alpha(x(\tau))d\tau
+	$$
+	
+	\begin{figure}
+		\includegraphics[width=\linewidth]{trajectory.png}
+		\caption{The trajectories of a spin-up, spin-down and a spin-zero particle, $\hbar /m = 0.01$, $M=10$, $R=21$}
+		\label{fig:trajectories}
+	\end{figure}
 	
 	
 
