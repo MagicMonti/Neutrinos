@@ -1,9 +1,10 @@
-\contentsline {section}{\numberline {1}$\psi (x)$ in Minkowskispace}{1}{}%
+\contentsline {section}{\numberline {1}$\psi (x)$ in Minkowskispace}{2}{}%
 \contentsline {section}{\numberline {2}Dirac equation in curved space}{3}{}%
-\contentsline {subsection}{\numberline {2.1}Covariant derivative}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Covariant derivative}{4}{}%
 \contentsline {section}{\numberline {3}Curvature Tensor}{6}{}%
 \contentsline {section}{\numberline {4}Solution of dirac equation to $\mathcal {O} (\hbar ^2)$}{6}{}%
 \contentsline {section}{\numberline {5}Corrections to 4-velocity and 4-acceleration}{7}{}%
 \contentsline {section}{\numberline {6}Effect by gravitational waves}{7}{}%
 \contentsline {section}{\numberline {7}Correction to geodesic in Schwarzschild background}{10}{}%
 \contentsline {subsection}{\numberline {7.1}Numerical experiments}{12}{}%
+\contentsline {subsection}{\numberline {7.2}Tangential geodesic}{14}{}%

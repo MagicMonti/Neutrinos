@@ -223,6 +223,7 @@
 	
 	
 	\begin{equation}
+		\label{dirac_in_curved}
 	\left(i\gamma^a \left( \partial_\alpha + \Gamma_\alpha \right)-m\right)\Psi = (i\nn - m)\Psi = 0
 	\end{equation}
 	\section{Curvature Tensor}
@@ -251,9 +252,14 @@
 	
 	
 	\section{Solution of dirac equation to $\mathcal{O} (\hbar^2)$}
-	$$
-	\ldots
-	$$
+	doing a WKB expanions,which means expanding $\psi$ in powers of $\hbar$ one writes,
+	
+	\begin{equation}
+		\psi(x) = \exp(i S[x]/\hbar) \sum_{n=0}^{\infty}(-i\hbar)^n \psi_n(x)
+	\end{equation}
+	inserting into eq.(\ref{dirac_in_curved})
+	
+	
 	\begin{equation}
 		\label{solution_to_diraceq}
 		\psi(x) = \psi_0 \exp\left(\frac{i}{\hbar}\int dx^\mu p_\mu\right)
@@ -537,6 +543,14 @@
 		\caption{The trajectories of a spin-up, spin-down and a spin-zero particle, $\hbar /m = 0.01$, $M=10$, $R=21$}
 		\label{fig:trajectories}
 	\end{figure}
+	
+	\subsection{Tangential geodesic}
+	
+	The geodesic equation can be reduced to,
+	
+	\begin{equation}
+		H = \frac{1}{2} \left(\frac{d r}{d \tau}\right)^2 + V_{eff}(r) = const
+	\end{equation} 
 	
 	
 
