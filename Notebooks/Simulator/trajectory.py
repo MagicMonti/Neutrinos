@@ -13,10 +13,16 @@ c = const.c
 
 m = 2.14E-37 
 
+m_e = 9.109E-31
+
 M = 5.972E24 
 r_s = 2* const.G * M/c**2
 
-hbar_m = const.hbar/m
+
+hbar_m = const.hbar/m_e
+
+print(r_s)
+print(hbar_m)
 
 class Geodesic():
     def __init__(self, u_0, x_0):
@@ -28,10 +34,13 @@ class Geodesic():
     def normalize_u(self,u,x):
         """noramlizes u to u^2 = 1"""
         r = x[1]
+        theta = x[2]
+        u_theta = u[2]
         u_phi = u[3]
         u_r = u[1]
         #print(r)
-        u_t = np.sqrt(r*(c**2*r - c**2*r_s + r**3*u_phi**2 - r**2*r_s*u_phi**2 + r*u_r**2))/(c*(r - r_s))
+        #print(r*(c**4*r - c**4*r_s + r**3*u_phi**2*np.sin(theta)**2 + r**3*u_theta**2 - r**2*r_s*u_phi**2*np.sin(theta)**2 - r**2*r_s*u_theta**2 + r*u_r**2))
+        u_t = np.sqrt(r*(c**4*r - c**4*r_s + r**3*u_phi**2*np.sin(theta)**2 + r**3*u_theta**2 - r**2*r_s*u_phi**2*np.sin(theta)**2 - r**2*r_s*u_theta**2 + r*u_r**2))/(c*(r - r_s))
         return np.array([u_t, u_r, 0, u_phi])
 
     def acc(self,u,x):
@@ -46,6 +55,18 @@ class Geodesic():
         #print(a_3)
 
         return np.array([a_0,a_1,0,a_3])
+
+    def norm_of_vector(self, vec, x):
+
+        u_phi = vec[3]
+        u_theta = vec[2]
+        u_t = vec[0]
+        u_r = vec[1]
+        r = x[1]
+        theta = x[2]
+        
+
+        return (-r**3*(r - r_s)*(u_phi**2*np.sin(theta)**2 + u_theta**2) - r**2*u_r**2 + u_t**2*c**2*(r - r_s)**2)/(r*c**2*(r - r_s))
 
     def calc_path(self, simulation_length=10000, dtau=0.0001, spin=0):
 
@@ -72,6 +93,8 @@ class Geodesic():
                 u[i+1] =  self.acc(u[i], x[i])*dtau + u[i]
                 #print(u[i])
                 x[i+1] =  v[i]*dtau + x[i]
+
+                print(self.norm_of_vector(u[i], x[i]), self.norm_of_vector(v[i], x[i]))
         if spin==-1/2:
             v = np.ones((simulation_length,4))
             for i in range(simulation_length):
@@ -87,6 +110,8 @@ class Geodesic():
                 #print(u[i])
                 x[i+1] =  v[i]*dtau + x[i]
 
+                print(self.norm_of_vector(u[i], x[i]), self.norm_of_vector(v[i], x[i]))
+
         elif spin==0:
             for i in range(simulation_length):
 
@@ -98,6 +123,8 @@ class Geodesic():
                 u[i+1] =  self.acc(u[i], x[i])*dtau + u[i]
                 #print(u[i])
                 x[i+1] =  u[i]*dtau + x[i]
+
+                print(self.norm_of_vector(u[i], x[i]))
 
 
         return x

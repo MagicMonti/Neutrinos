@@ -35,8 +35,8 @@
 	\tableofcontents 
 	
 	
-	\section{$\psi(x)$ in Minkowskispace}
-	The Dirac equation is as follows;
+	\section{$\psi(x)$ in Minkowski space}
+	The Dirac equation (DE) in flat Minkowski space reads as follows;
 	\begin{equation}
 		\label{diracEq}
 		\left( i \np -m \right) \psi(x) = 0 
@@ -44,14 +44,21 @@
 
 	where $\np = \gamma^\mu \partial_\mu$,
 	
-	One approach to solving the equation is:
+	One approach to solving the equation is by sepereting $\psi$ into an spinor and phase part:
 	$$
 	\psi(x) = u(\vec{p}) e^{i p^\mu x_\mu}
 	$$
+	Inserting the above expression one gets a usual matrix eigenvalue problem, it's quit handy to boost the system into a rest frame where $p^\mu = (m, \vec{0})$. This transformation reduces the DE quite dramatically such that one gets,
+	
+	$$
+	(\gamma^0 - \mathbf{1} )u(m) = 0
+	$$
+	This equation has the following solutions;
 	
 	$$
 	u^{(1)}\left({\vec {0}}\right)={\begin{bmatrix}1\\0\\0\\0\end{bmatrix}}\qquad u^{(2)}\left({\vec {0}}\right)={\begin{bmatrix}0\\1\\0\\0\end{bmatrix}}\qquad v^{(1)}\left({\vec {0}}\right)={\begin{bmatrix}0\\0\\1\\0\end{bmatrix}}\qquad v^{(2)}\left({\vec {0}}\right)={\begin{bmatrix}0\\0\\0\\1\end{bmatrix}}
 	$$
+	To get $u(p)$ in a none rest frame, one needs to boost $u(m)$ back to the moving system. 
 	
 	For a ortochronous propper lorentz transformation
 	$$ 
@@ -61,131 +68,150 @@
 	
 	follows
 	$$
-	\Lambda_{1/2}^{-1} \gamma^\mu \Lambda_{1/2} = \Lambda^\mu_{1/2 \nu} \gamma^\nu
+	\Lambda_{1/2}^{-1} \gamma^\mu \Lambda_{1/2} = \Lambda^\mu\,_{ \nu} \gamma^\nu 
 	$$
+	\footnote{Group theoretical proof outstanding}
 	
 	\begin{proof}
+		The DE needs to hold for every reference frame, one makes the ansatz,
 		$$\left( i \np' -m \right) \psi '(x') = 0$$ 
-		\break
 		with
-		$$\partial'_\mu = {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu $$
-		$$\rightarrow \np' = \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu$$
+		$$\partial'_\mu = {\Lambda^{-1}}^{\nu}\,_{\mu}  \partial_\nu $$
+		$$\rightarrow \np' = \gamma^\mu {\Lambda^{-1}}^{\nu}\,_{\mu}  \partial_\nu$$
 		follows
-		$$\left( i \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu -m \right) \Lambda_{1/2} \psi(x) = 0$$ 
-		$$ \Lambda_{1/2}  \Lambda_{1/2}^{-1}\left( i \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu -m \right) \Lambda_{1/2} \psi(x) = 0$$ 
-		$$ \Lambda_{1/2} \left( i \Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu \Lambda_{1/2} -m \right) \psi(x) = 0$$ 
-		$$ \Lambda_{1/2} \left( i \Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}   \Lambda_{1/2} \partial_\nu -m \right) \psi(x) = 0$$ 
+		$$\left( i \gamma^\mu {\Lambda^{-1}}^{\nu}\,_{\mu}  \partial_\nu -m \right) \Lambda_{1/2} \psi(x) = 0$$ 
+		$$ \Lambda_{1/2}  \Lambda_{1/2}^{-1}\left( i \gamma^\mu {\Lambda^{-1}}^{\nu}\,_{\mu}  \partial_\nu -m \right) \Lambda_{1/2} \psi(x) = 0$$ 
+		$$ \Lambda_{1/2}  i \Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}  \partial_\nu \left(\Lambda_{1/2} \psi(x)\right) -m   \Lambda_{1/2} \psi(x)= 0$$ 
+		$$ \Lambda_{1/2} \left( i \Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}^{\nu}\,_{\mu}  \Lambda_{1/2} \partial_\nu -m \right) \psi(x) = 0$$ 
 		because
 		$$\left( i \np -m \right) \psi(x) = 0$$
 		follows
-		$$\Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}   \Lambda_{1/2} = \gamma^\nu$$
-		$$\Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}_{\ \mu}^{\nu}   = \gamma^\nu \Lambda_{1/2}^{-1}$$
-		$$\Lambda_{1/2}^{-1} \gamma^\mu \delta^\alpha_\mu   = \gamma^\nu \Lambda_{1/2}^{-1}\Lambda^\alpha_{\ \nu}$$
-		$$\Lambda_{1/2}^{-1} \gamma^\alpha \Lambda_{1/2} = \gamma^\nu \Lambda^\alpha_{\ \nu}=  \Lambda^\alpha_{\ \nu} \gamma^\nu $$
+		$$\Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}^{\nu}\,_{\mu}  \Lambda_{1/2} = \gamma^\nu$$
+		$$\Lambda_{1/2}^{-1} \gamma^\mu {\Lambda^{-1}}^{\nu}\,_{\mu}   = \gamma^\nu \Lambda_{1/2}^{-1}$$
+		$$\Lambda_{1/2}^{-1} \gamma^\mu \delta^\alpha_\mu   = \gamma^\nu \Lambda_{1/2}^{-1}\Lambda^\alpha\,_{\nu}$$
+		$$\Lambda_{1/2}^{-1} \gamma^\alpha \Lambda_{1/2} = \gamma^\nu \Lambda^\alpha\,_{\nu}=  \Lambda^\alpha\,_{\nu} \gamma^\nu $$
 	\end{proof}
 	
 	\section{Dirac equation in curved space}
-	Equation (\ref{diracEq}) is not well defined in curved space, because $\partial_\mu \Psi(x)$ does not transform under a general coordinate transformation like a spinor. Further the Clifford-algebra needs to be generalized to the generic the metric $g_{\mu \nu}$. Since GR is defined on a manifold $\mathcal{M}$, it is possible to choose a coordinate system, that is locally flat and has Lorentzian signature. In order to manifest these circumstances in a mathematical formalism, the \textit{vierbein} or \textit{tetraed} formalism is suitable, which is worth studying more closely.
+	Equation (\ref{diracEq}) is only well-defined in flat space, because $\partial_\mu \Psi(x)$ does not transform under a general coordinate transformation like a spinor. Further the Dirac-algebra needs to be generalized to the generic the metric $g_{\mu \nu}$ which leads to the Clifford-algebra. Since GR is defined on a manifold $\mathcal{M}$, it is possible to choose a coordinate system, that is locally flat with Lorentzian signature. In order to manifest these circumstances in a mathematical formalism, the \textit{vierbein} or \textit{tetraed} formalism is suitable, which is worth studying more closely.
 	
 	\begin{equation}
 		\label{tetraed}
-		g_{\mu \nu}(x)  e_a^{\ \mu}(x) e_b^{\ \nu}(x) = \eta_{a b}
+		g_{\mu \nu}(x)  e_a\,^{\mu}(x) e_b\,^{\nu}(x) = \eta_{a b}
 	\end{equation}
-	Equation (\ref{tetraed}) is the \underline{local} coordinate transformation connecting the curved metric $g_{\mu \nu}$ and the flat metric $\eta_{ab}$. Here $e_a^\mu(x)$ are the so-called tetraeds. To distinguish flat from general coordinates, Greek indices $\mu,\nu,\ldots$ are used for curved space and
-	Latin indices $a,b,c,\ldots$ are therefore used for the local flat space. In order not to overload the notation, $x$ dependencies are suppressed, and we write $g_{\mu\nu} = g_{\mu\nu}(x)$ and $e_a^{\ \mu } = e_a^{\ \mu}(x)$
-	¸
-	A relation for the inverse metric can be defined analogously as follows.
+	Equation (\ref{tetraed}) is the \underline{local} coordinate transformation connecting the metric $g_{\mu \nu}(x) $ defined in curved space-time and  Minkowski metric $\eta_{ab}$. Here $e_a\,^\mu(x)$ are the so-called tetraeds. To distinguish flat from general coordinates, Greek indices $\mu,\nu,\ldots$ are used for curved space and
+	Latin indices $a,b,c,\ldots$ are therefore used for the local flat space. In order not to overload the notation, $x$ dependencies are suppressed, and we write $g_{\mu\nu} = g_{\mu\nu}(x)$ and $e_a\,^{ \mu } = e_a\,^{ \mu}(x)$.
+	A relation for the inverse metric can be defined analogously,
 	
 	
 	\begin{equation}
 		\label{tetraed}
-		g^{\mu \nu}  \tilde{e}_\mu^{\ a} \tilde{e}_\nu^{\ b} = \eta^{a b}
+		g^{\mu \nu}  \tilde{e}_\mu\,^{a} \tilde{e}_\nu\,^{b} = \eta^{a b}
 	\end{equation}
-	 $e$ and $\tilde{e}$ are generally different objects, since the index position of the Greek or Latin index clearly defines whether it is either $e$ or $\tilde{e}$ the " $\tilde{}$ " is omitted, but care must be taken, when expressions are explicitly written in components; since e.g. $e^2_2 \neq \tilde{e}^2_2$
-	 
-
-	Because of
+	 $e$ and $\tilde{e}$ are generally different objects, but since the index position of the Greek or Latin index clearly defines whether it is either $e$ or $\tilde{e}$ the " $\tilde{}$ " is omitted, but care must be taken, when expressions are explicitly written in components; since e.g. $e^2_2 \neq \tilde{e}^2_2$.
+	Further, because of
 	$$g^{\mu\nu}g_{\nu\alpha}=\delta^\mu_\alpha$$
 	follows: 
 	$$
-	e_a^{\ \mu}e_\mu^{\ b} = \delta_a^b \ , \ \ e_a^{\ \nu}e_\mu^{\ a} = \delta_\mu^\nu
+	e_a\,^{\mu}e_\mu\,^{b} = \delta_a^b \ , \ \ e_a\,^{\nu} e_\mu\,^{a} = \delta_\mu^\nu
 	$$
-	A general tensor $T^{\mu_1 \mu_2 \ldots \mu_l}\,_{\nu_1 \nu_2 \ldots \nu_p}$ can be written in flat coordinates as follows,
+	A general tensor $T^{\mu_1 \mu_2 \ldots \mu_l}\,_{\nu_1 \nu_2 \ldots \nu_p}$ can be written in flat coordinates as the following,
 	
 	
 
 	\begin{equation}
-		T^{a_1 a_2 \ldots a_l}_{\ \ \ \ \ \ \ \ \ b_1 b_2 \ldots b_p} = e_{a_1}^{\ \nu_1} e_{a_2}^{\ \nu_2} \ldots e_{a}^{\ \nu_l} e_{\mu_1}^{\ b_1} e_{\mu_2}^{\ b_2} \ldots e_{\mu_p}^{\ b_p} T^{\mu_1 \mu_2 \ldots \mu_l}_{\ \ \ \ \ \ \ \ \ \nu_1 \nu_2 \ldots \nu_p}
+		T^{a_1 a_2 \ldots a_l}\,_{b_1 b_2 \ldots b_p} =  e_{\mu_1}\,^{ a_1} e_{\mu_2}\,^{a_2} \ldots e_{\mu_l}\,^{a_l} e_{b_1}\,^{ \nu_1} e_{b_2}\,^{\nu_2} \ldots e_{b_p}\,^{\nu_p} T^{\mu_1 \mu_2 \ldots \mu_l}\,_{ \nu_1 \nu_2 \ldots \nu_p}
 	\end{equation}
+	and vice versa.
 	
 	\subsection{Covariant derivative}
-	A derivative of vectors, or more generally tensors, is a mathematical "tool" that measures the change in spacetime. Unfortunately, the expression $\partial_\mu V^\nu$ has in general no tensorial behavior. If a general coordinate transformation $\partial x^\alpha/ \partial x'^\nu$ acts on $\partial_\mu V^\nu$, terms of the second derivative arise which destroy the tensorial behaviour.
+	A derivative acting on vectors, or more generally on tensors, is a mathematical "tool" that measures the change in spacetime. Unfortunately, the expression $\partial_\mu V^\nu$ has in general no tensorial behavior. If a general coordinate transformation $\partial x^\alpha/ \partial x'^\nu$ acts on $\partial_\mu V^\nu$, terms of the second derivative arise which destroy the tensorial behaviour.
 	 
 	
-	Furthermore, a comparison of vectors that are spatially separated and therefore live in different tangential spaces is not properly defined because, as mentioned, they are elements of another space. In order to compare vectors from different spaces, one must be shifted autoparallel from one tangent space $T_P\mathcal{M}$ to the other $T_Q\mathcal{M}$.
+	Furthermore, a comparison of tensors that are spatially separated live in different tangential spaces, therefore a naive comparison is not properly defined. In order to compare two tensors from two distinct tangential spaces, one tensor must be shifted auto parallel from one space $T_P\mathcal{M}$ to the other one $T_Q\mathcal{M}$.
 	
 	
-	Therefore it makes sense to define a covariant derivative $\nabla_\textbf{v}$, where $\textbf{v} \in T_P\mathcal{M}$. If $\textbf{u} : \mathcal{M} \mapsto T\mathcal{M}$ is a vector field defined on the manifold, then $\nabla_\textbf{v}\textbf{u} |_P$ is the change of $\textbf{u}$ towards $\textbf{v}$ at point $P$, the following expression can easily be rewritten in index notation; by using
-	$\textbf{u} = u^\alpha(x) \partial_\alpha$ and $\textbf{v} = v^\beta \partial_\beta$. For the effect on basis vectors it makes sense to define a connection in the following way $\nabla_{(\partial_\beta)}(\partial_\alpha) = \Gamma^\mu_{\alpha \beta} \partial_\mu$ (at this point, no clear definition on $\Gamma$ is made, only the fact, it cancels the terms of second order derivative, which would arise by transforming $\partial_\mu V^\nu$ but it's not a unique definition, to make the covariant derivative properly tensorial) follows with the insertion of $\textbf{u}$ and $\textbf{v} $;
+	It makes sense to define a covariant derivative $\nabla_\textbf{v}$, where $\textbf{v} \in T_P\mathcal{M}$. If $\textbf{u} : \mathcal{M} \mapsto T\mathcal{M}$ is a vector field defined on the manifold, then $\nabla_\textbf{v}\textbf{u} |_P$ is the change of $\textbf{u}$ towards $\textbf{v}$ at point $P$, this expression can easily be rewritten in index notation by using
+	$\textbf{u} = u^\alpha(x) \partial_\alpha$ and $\textbf{v} = v^\beta(x) \partial_\beta$. For the effect on basis vectors it makes sense to define a connection in the following way $\nabla_{(\partial_\beta)}(\partial_\alpha) = \Gamma^\mu\,_{\alpha \beta} \partial_\mu$ (at this point, no clear definition on $\Gamma$ has been made, only the fact, it cancels the terms of second order derivative, which would arise by transforming $\partial_\mu V^\nu$ but it's not a unique definition, to make the covariant derivative properly tensorial). Inserting of $\textbf{u}$ and $\textbf{v} $ into $\nabla_\textbf{v}\textbf{u} |_P$ gives,
 	
 	\begin{multline}
 		\label{kovariant}
-		\nabla_{v^\beta \partial_\beta}(u^\alpha(x) \partial_\alpha) = v^\beta \nabla_{(\partial_\beta)} (u^\alpha(x)\partial_\alpha ) = v^\beta \left(\nabla_{(\partial_\beta)} (u^\alpha(x)) \partial_\alpha +  u^\alpha(x) \nabla_{(\partial_\beta)} \partial_\alpha \right)) \\ = v^\beta \left(\partial_\beta u^\alpha(x)  \partial_\alpha +  u^\alpha(x) \Gamma^\mu_{\alpha \beta} \partial_\mu\right)  \\ = v^\beta \left(\partial_\beta u^\alpha(x)   +  u^\mu(x) \Gamma^\alpha_{\mu \beta}\right) \partial_\alpha 
+		\nabla_{v^\beta \partial_\beta}(u^\alpha(x) \partial_\alpha) = v^\beta \nabla_{(\partial_\beta)} (u^\alpha(x)\partial_\alpha ) = v^\beta \left(\nabla_{(\partial_\beta)} (u^\alpha(x)) \partial_\alpha +  u^\alpha(x) \nabla_{(\partial_\beta)} \partial_\alpha \right)) \\ = v^\beta \left(\partial_\beta u^\alpha(x)  \partial_\alpha +  u^\alpha(x) \Gamma^\mu\,_{\alpha \beta} \partial_\mu\right)  \\ = v^\beta \left(\partial_\beta u^\alpha(x)   +  u^\mu(x) \Gamma^\alpha\,_{\mu \beta}\right) \partial_\alpha 
 	\end{multline}
-	The second term is obtained, because of the linearity of $T_P\mathcal{M}$, the second by the product rule of the derivation, the third by substituting $\Gamma$ and that the fact that a covariant derivation of scalars goes into the conventional derivation. The last expression is obtained by index renaming and is valid for all $v^\beta$, therefore it follows for the covariant derivation in index notation,
+	The second term is obtained, by using linearity of $T_P\mathcal{M}$, the second by the product rule of the derivation. The third by substituting $\Gamma$ and using the fact, that a covariant derivation of scalars reduces to conventional derivations. The last expression is obtained by index renaming. This expression is valid for all $v^\beta$, therefore it follows for the covariant derivation in index notation,
 	
-
-	$$\nabla_\beta u^\alpha = \partial_\beta u^\alpha  +   \Gamma^\alpha_{\mu \beta} u^\mu$$
+	\begin{equation}
+		\label{covariant}
+		\nabla_\beta u^\alpha = \partial_\beta u^\alpha  +   \Gamma^\alpha\,_{\mu \beta} u^\mu
+	\end{equation}
 	
-	because of $\nabla_\beta u^\alpha u_\alpha = \partial_\beta u^\alpha u_\alpha$ 
+	because of $\nabla_\beta \left(u^\alpha u_\alpha\right) = \partial_\beta \left(u^\alpha u_\alpha \right)$ 
 	follows
 	
-	$$\nabla_\beta u_\alpha = \partial_\beta u^\alpha  -   \Gamma^\mu_{\alpha \beta} u_\mu$$.
+	$$\nabla_\beta u_\alpha = \partial_\beta u^\alpha  -   \Gamma^\mu\,_{\alpha \beta} u_\mu$$.
 	
 	By doing this procedure for $\nabla_\beta u^\mu u^\nu \ldots$ one gets the behaviour  of a general tensor  $T^{\mu_1 \mu_2 \ldots \mu_l}\,_{\nu_1 \nu_2 \ldots \nu_p}$ acting with a covariant derivative. Additionally, it makes a lot of sense to define the connection torsion free which means,
-	
 	$$
 	\Gamma^\rho\,_{\alpha \beta} = \Gamma^\rho\,_{\beta \alpha}.
 	$$
-	
-	Furthermore, by demanding metric-compatibility, which means $\nabla_\alpha g_{\mu \nu} = 0$
-	one gets,
+	This is similar by demanding metric-compatibility, which in other words means the covariant derivative acting on $g^{\mu \nu}$ gets annihilated, $\nabla_\alpha g_{\mu \nu} = 0$. So the connections reads,
 	
 	
 	\begin{equation}
 		\label{christoffelconnection}
-		\Gamma _{{\mu }{\nu }}^{\sigma }={\frac {1}{2}}g^{{\sigma }{\kappa }}\left({\frac {\partial g_{{\nu }{\kappa }}}{\partial x^{\mu }}}+{\frac {\partial g_{{\mu }{\kappa }}}{\partial x^{\nu }}}-{\frac {\partial g_{{\mu }{\nu }}}{\partial x^{\kappa }}}\right)
+		\Gamma^{\sigma }\, _{{\mu }{\nu }}={\frac {1}{2}}g^{{\sigma }{\kappa }}\left({\frac {\partial g_{{\nu }{\kappa }}}{\partial x^{\mu }}}+{\frac {\partial g_{{\mu }{\kappa }}}{\partial x^{\nu }}}-{\frac {\partial g_{{\mu }{\nu }}}{\partial x^{\kappa }}}\right),
 	\end{equation}
+	Which is the well known Christoffel-symbol.
 	
-	
-	It is now interesting to know how the covariant derivatives acts on $u^a$. 
-	
-	With the approach;
+	It is now interesting to know how the covariant derivatives acts on $u^a$. One makes the the following approach,
 	
 	\begin{equation}
 		\label{dua}
-		\nabla_\beta u^a = \partial_\beta u^a + \omega_{\beta b}^{ \ \ a}u^b
+		\nabla_\beta u^a = \partial_\beta u^a + \omega_{\beta b}\,^{a}u^b
 	\end{equation}
-	
-	yields 
+	using the fact that the above expression transforms like a $T_{\beta}\,^{a}$ tensor, it is useful to rewrite it in the basis of general coordinates.  
 	$$
-	e_\alpha^a \nabla_\beta u^\alpha = \nabla_\beta u^a
+	\nabla_\beta u^a = e_\alpha\,^a \nabla_\beta u^\alpha 
 	$$
-	follows,
+	expanding $\nabla_\beta$ usign eq. (\ref{covariant}) and eq. (\ref{dua}),
 	$$
-	e_\alpha^a \left(  \partial_\beta u^\alpha  +   \Gamma^\alpha_{\mu \beta} u^\mu \right) = \partial_\beta u^a + \omega_{\beta b}^{ \ \ a}u^b
-	$$
-	$$
-	 \partial_\beta(u^\alpha e_\alpha^a) - u^\alpha \partial_\beta (e_\alpha^a) +  e_\alpha^a   \Gamma^\alpha_{\mu \beta} u^\mu  = \partial_\beta u^a + \omega_{\beta b}^{ \ \ a}u^b
+	 \partial_\beta u^a + \omega_{\beta b}\,^{a}u^b = e_\alpha\,^a \left(  \partial_\beta u^\alpha  +   \Gamma^\alpha\,_{\mu \beta} u^\mu \right)
 	$$
 	$$
- - u^b e_b^{\ \alpha} \partial_\beta (e_\alpha^a) +  e_\alpha^a   \Gamma^\alpha_{\mu \beta} u^b e_b^{\ \mu}  =  \omega_{\beta b}^{ \ \ a}u^b
+	 = \partial_\beta(\underbrace{u^\alpha e_\alpha\,^a}_{u^a}) - u^\alpha \partial_\beta (e_\alpha\,^a) +  e_\alpha\,^a   \Gamma^\alpha\,_{\mu \beta} u^\mu 
+	$$
+	$$
+ \Rightarrow - u^b e_b\,^{\alpha} \partial_\beta (e_\alpha\,^a) +  e_\alpha\,^a   \Gamma^\alpha\,_{\mu \beta} u^b e_b\,^{\mu}  =  \omega_{\beta b}\,^{a}u^b
 	$$
 	for all $u^b$ follows
-	$$
-	 \omega_{\beta b}^{ \ \ a} = \Gamma^\alpha_{\mu \beta} e_b^{\ \mu} e_\alpha^a    - e_b^{\ \alpha} \partial_\beta (e_\alpha^a)  
-	$$
-	In contrast to $\Gamma^\alpha_{\mu \beta}$, $\omega_{\beta a b}$ transforms like a 2-form in $a,b$ which means its totally antisymmetric in $a$ and $b$.
+	\begin{equation}
+		 \omega_{\beta b}\,^{a} = \Gamma^\alpha\,_{\mu \beta} e_b\,^{\mu} e_\alpha\,^a    - e_b\,^{\alpha} \partial_\beta (e_\alpha\,^a) 
+	\end{equation}
+	renaming indices,
+	\begin{equation}
+		\label{omega}
+		\omega_{\mu a b} = \eta_{b c}\Gamma^\alpha\,_{\nu \mu} e_a\,^{\nu} e_\alpha\,^c    - \eta_{b c} e_a\,^{\alpha} \partial_\mu (e_\alpha\,^c) 
+	\end{equation}
+	In contrast to $\Gamma^\alpha\,_{\mu \beta}$, $\omega_{\mu a b}$ transforms like a 2-form in $a,b$.
+	
+	\begin{proof}
+		To show $\omega_{\mu a b}$ is antisymmetric in $a$ and $b$ it is convenient to contract this quantity with something symmetric like the Minkowski metric $\eta^{ab}$. 
+		$$\omega_{\mu a b}\eta^{ab} \stackrel{?}{=} 0$$
+		using eq. (\ref{omega}),
+		$$\omega_{\mu a b}\eta^{ab} = \Gamma^\alpha\,_{\nu \mu} e_a\,^{\nu} e_\alpha\,^c \underbrace{\eta_{b c} \ \eta^{ab}}_{\delta_c^a}    -  e_a\,^{\alpha} \partial_\mu (e_\alpha\,^c)  \underbrace{\eta_{b c} \ \eta^{ab}}_{\delta_c^a}     $$
+		$$ = \Gamma^\alpha\,_{\nu \mu} \underbrace{e_a\,^{\nu} e_\alpha\,^a}_{\delta_\alpha^\nu} -  e_a\,^{\alpha} \partial_\mu (e_\alpha\,^a)$$
+		$$ = \Gamma^\nu\,_{\nu \mu} - e_a\,^{\alpha} \partial_\mu (e_\alpha\,^a)$$
+		
+		using the definition of the Christoffel symbols one gets,
+		$$\Gamma^\nu\,_{\nu \mu} = \frac{1}{2}\left(g^{\nu \kappa}\partial_\mu g_{\nu \kappa}\right)$$
+		inserting $ g_{\nu \kappa} = e_{\nu}\,^a e_{\kappa}\,^b \eta_{ab}$ and $ g^{\nu \kappa} = e_{a}\,^\nu e_{b}\,^\kappa \eta^{ab}$, gives $$\Gamma^\nu\,_{\nu \mu} =  e_a\,^{\alpha} \partial_\mu (e_\alpha\,^a)$$
+		and therefore $\omega_{\mu a b}$ is antisymmetric in $a$ and $b$
+		
+		It is easy to see that $\omega_{\mu a b}$ transforms like a Lorentz tensor in $a$ and $b$ since a Lorentz transformation $\Lambda$ is not depended on $x$. 
+		
+		This concludes the statement $\omega_{\mu a b}$ transforms like 2-form in $a$ and $b$
+		
+	\end{proof}
 	
 	Finally, the covariant derivative on a spinor $\Psi(x)$ is as follows,
 	
@@ -258,6 +284,11 @@
 		\psi(x) = \exp(i S[x]/\hbar) \sum_{n=0}^{\infty}(-i\hbar)^n \psi_n(x)
 	\end{equation}
 	inserting into eq.(\ref{dirac_in_curved})
+	follows,
+	
+	\begin{equation}
+		\left(\gamma^\mu \partial_\mu S[x] + m \right)
+	\end{equation}
 	
 	
 	\begin{equation}
