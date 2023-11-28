@@ -1,8 +1,0 @@
-\babel@toc {nil}{}\relax 
-\contentsline {section}{\numberline {1}The Problem}{1}{}%
-\contentsline {section}{\numberline {2}Forward process}{2}{}%
-\contentsline {section}{\numberline {3}Backward process}{3}{}%
-\contentsline {section}{\numberline {4}Data Preprocessing}{6}{}%
-\contentsline {section}{\numberline {5}Experiments}{7}{}%
-\contentsline {section}{\numberline {6}Generalization}{7}{}%
-\contentsline {section}{\numberline {7}Conclusion}{9}{}%
