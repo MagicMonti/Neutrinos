@@ -5,7 +5,14 @@ from scipy import constants as const
 import pandas as pd
 
 
+<<<<<<< HEAD
 def create_data_set(beta_list, m_list):
+=======
+
+
+def create_dataset():
+
+>>>>>>> a4c080d (added neural-network)
     c = const.c
 
     M = 5.972E24 
@@ -20,7 +27,13 @@ def create_data_set(beta_list, m_list):
 
     r_start = 6371000 /l_p #earth radius in natural units
 
+<<<<<<< HEAD
     
+=======
+    m = 2.14E-37 
+
+    m = m / m_p
+>>>>>>> a4c080d (added neural-network)
 
     x_0 = np.array([0, r_start, np.pi/2, 0], dtype=np.double)
 
@@ -31,6 +44,11 @@ def create_data_set(beta_list, m_list):
 
     dataframes = []
 
+<<<<<<< HEAD
+=======
+    beta_list = np.array([0.5, 0.6, 0.7, 0.8,0.9])
+    m_list = np.array([m*1E-5 *4, m*1E-5 *3.5 ,m*1E-5 *3, m*1E-5 *2.5, m*1E-5 *2, m*1E-5 *1], dtype=np.double)
+>>>>>>> a4c080d (added neural-network)
 
     for beta in beta_list:
         geodesic = Geodesic(beta, x_0, r_s, r_start)
@@ -62,6 +80,7 @@ def create_data_set(beta_list, m_list):
     return pd.concat(dataframes)
 
 
+<<<<<<< HEAD
 
 def create_training_dataset():
     m_p = 1.7826627E-36 
@@ -82,6 +101,8 @@ def create_test_dataset():
 
     
 
+=======
+>>>>>>> a4c080d (added neural-network)
         
 
 
